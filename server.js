@@ -11,15 +11,12 @@ mongoose.connect("mongodb+srv://agarwalkartik704:UyWMerFXhbi22vLg@cluster0.acyo3
 }
 ).then(() => console.log("MongoDb Connected..!")).catch((error) => console.log(error));
 
-// rendering the ejs file
 app.get('/', (req, res) => {
     res.render("index.ejs", { shortUrl: null })
 })
 
-// shorting url logic
 app.post('/short', shortUrl)
 
-// redirect to original url using short code :- dynamic routing
 app.get('/:shortCode', getOriginalUrl)
 
 const port = 3000;

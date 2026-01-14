@@ -7,7 +7,6 @@ export const shortUrl = async (req, res) => {
 
     const shortUrl = `http://localhost:3000/${shortCode}`;
 
-    // save to database
     const newUrl = new Url({ shortCode, longUrl });
     await newUrl.save();
 
@@ -19,7 +18,6 @@ export const shortUrl = async (req, res) => {
 export const getOriginalUrl = async (req, res) => {
     const shortCode = req.params.shortCode
 
-    // find on database
     const originalUrl = await Url.findOne({ shortCode })
 
     if (originalUrl) {
